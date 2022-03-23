@@ -1,18 +1,21 @@
 # Misc - Forest Trails (24 solves / 495 points)
 **Description :** *In order to survive, we need oxygen, and trees give us oxygen. Also, here's something totally unrelated that you might find interesting.*
 
-<center>084 082 051 123 048 082 084 097 051 072 095 051 087<br>
-080 083 104 084 082 095 095 095 077 072 084 051 072<br>
-049 095 078 051 089 105 119 067 070 084 051 083 052<br>
-051 084 051 080 051 083 084 052 095 072 095 052 084<br>
-095 082 084 083 085 048 095 072 095 075 125 118 115</center>
+<p align="center">
+  084 082 051 123 048 082 084 097 051 072 095 051 087<br>
+  080 083 104 084 082 095 095 095 077 072 084 051 072<br>
+  049 095 078 051 089 105 119 067 070 084 051 083 052<br>
+  051 084 051 080 051 083 084 052 095 072 095 052 084<br>
+  095 082 084 083 085 048 095 072 095 075 125 118 115
+</p>
 
 ### Write-up :
 My first reflex here was to analyze what looks like to be a ciphertext of some kind. I got initially tricked by its structure, the way the numbers were grouped etc and got baited by the theme of the challenge which were obviously related somehow to trees but at the end, I should have identified so much easily the famous character encoding standard known as ASCII... 😅
 
 Next step was to quickly decode it, manually or with one of the numerous tools that can do that. From one of them, I got the following result :
-
-![ascii](images/asciiTree.png)
+<p align="center">
+  <img src="images/asciiTree.png">
+</p>
 
 From there, it looks like we've the content of the flag but shuffled somehow. After spending quite some time trying to find some logic to reorder it, doing research about actual trees etc I suddenly remembers my distant classes about graph theory and trees. You can read more about graph theory  [here](https://en.wikipedia.org/wiki/Graph_theory) and about the trees we're interested in [here](https://en.wikipedia.org/wiki/Binary_tree).
 
@@ -23,7 +26,9 @@ There are a lot of different types of trees but the ones we're going to focus on
 - Binary tree : each node can have 2 children at most
 
 The resulting trees using our previously found ciphertext looks like this :
-![tree](images/fullTree.png)
+<p align="center">
+  <img src="images/fullTree.png">
+</p>
 
 Now that our tree is ready, we can see that what seems to be the beginning of our flag, the *v*, is at deepest level of three, far left and the rest is around. So we've found the way we want to follow in order to read our tree, the *depth-first search traversal (DFS) in order* technique. (You can find more information about the different options that exist to go through a tree on internet in general or [here](https://towardsdatascience.com/4-types-of-tree-traversal-algorithms-d56328450846) for instance). To summarize very briefly, you start from the root node then :
 1. Go as far left as possible by following the left children
@@ -35,7 +40,9 @@ Now that our tree is ready, we can see that what seems to be the beginning of ou
 7. Go to its closest parent
 8. .......
 
-![treeRead](images/treeRead.png)
+<p align="center">
+  <img src="images/treeRead.png">
+</p>
 
 Once the full tree read, you got the following flag :
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`vishwaCTF{TR33S_4R3_TH3_P03MS_TH4T_TH3_34RTH_WR1T3S_UP0N_TH3_SKY}`
