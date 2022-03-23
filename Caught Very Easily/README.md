@@ -14,10 +14,14 @@ First of all, we'll start with the clue we got from the flag format. You might n
 So now that we know what we're looking for, let's start to check the clues from the description. You might already know the whole story or have heard about it but anyway, you'll find it quickly once you googled *Ahmed Mansoor* : the **Pegasus Case**. In summary, this worldwide drama refers to a spyware called Pegasus and created by the NSO Group, an Israeli company working with governments agencies. The spyware was able to infiltrate mobile phones giving them access to pretty much everything : location data, photos, passwords, communications etc and the drama occurs in 2016 when it has been made public that NSO used it for spying illegally on journalists, activists and politicians for their clients and and **Ahmed Mansoor** was one of these targets.
 
 Then, you can probably remember we also add a clue about **jailbreaking** which can confirm that we're on the right track with the Pegasus spyware. A few more research later, you'll find Pegasus on three different CVEs called the **Trident Exploit Chain**. Clicking on the first link with such search on Google will give you the three following CVEs :
-![trident](images/trident.png)
+<p align="center">
+  <img src="images/trident.png">
+</p>
 
 With the exact CVEs, we can easily find the exploit we were looking on the **Exploit Database** giving us the following results with all the information we needed :
-![exploitdb](images/exploitdb.png)
+<p align="center">
+  <img src="images/exploitdb.png">
+</p>
 (You can find also find it by following this link : https://www.exploit-db.com/exploits/44836)
 
 Finally, we got our flag : `vishwaCTF{44836-2018-06-05}`
